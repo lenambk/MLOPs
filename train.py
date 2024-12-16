@@ -47,7 +47,7 @@ f1 = f1_score(y_test, predictions, average="macro")
 print("Accuracy:", str(round(accuracy, 2) * 100) + "%", "F1:", round(f1, 2))
 
 with open("./results/metrics.txt", "w") as outfile:
-    outfile.write(f"\nAccuracy = {accuracy.round(2)}, F1 Score = {f1.round(2)}.")
+    outfile.write(f"\nAccuracy = {round(accuracy, 2)}, F1 Score = {round(f1, 2)}.")
 
 import matplotlib.pyplot as plt
 from sklearn.metrics import ConfusionMatrixDisplay, confusion_matrix
