@@ -3,7 +3,7 @@ install:
 	.venv/bin/pip install --upgrade pip
 	.venv/bin/pip install -r requirements.txt
 	.venv/bin/pip install pandas
-	.venv/bin/pip install sklearn
+	.venv/bin/pip install scikit-learn
 	.venv/bin/pip install skops
 
 
