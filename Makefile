@@ -11,8 +11,7 @@ format:
 	black *.py
 
 train:
-	. .venv/bin/activate &&\
-	python train.py
+	.venv/bin/python train.py
 
 eval:
 	echo "## Model Metrics" > report.md
