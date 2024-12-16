@@ -5,6 +5,7 @@ install:
 	.venv/bin/pip install pandas
 	.venv/bin/pip install scikit-learn
 	.venv/bin/pip install skops
+	.venv/bin/pip install matplotlib
 
 
 
