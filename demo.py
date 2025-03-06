@@ -1,5 +1,5 @@
-@app.route('/recommend_ntd_log', methods=["POST", "GET"])
-def recommend_ntd_log():
+@app.route('/recommend_ntd', methods=["POST", "GET"])
+def recommend_ntd():
     try:
         data_body = dict(request.form)
         id_tin = data_body.get('new_id')
@@ -218,11 +218,11 @@ def recommend_ntd_log():
                                 },
 
                             },
-                            {
-                                "bool": {
-                                    "should": ssmd
-                                }
-                            },
+                            # {
+                            #     "bool":{
+                            #         "should":ssmd
+                            #     }
+                            # },
                             {
                                 "bool": {"should": ss_exp}
                             },
@@ -564,7 +564,7 @@ def recommend_ntd_log():
                                             "multi_match": {
 
                                                 "query": key_word,
-                                                "fields": ["cv_title"],
+                                                "fields": ["cv_all_php"],
                                                 "type": "phrase"
 
                                             }
@@ -687,7 +687,7 @@ def recommend_ntd_log():
                             },
 
                         },
-                        "min_score": 1.65,
+                        "min_score": 1.05,
                         "script": {
                             "source": "cosineSimilarity(params.query_vector, 'cv_title_vector_new') + 1.0",
                             "params": {
@@ -1189,11 +1189,7 @@ def recommend_ntd_log():
             list_id_cat_not_city = []
 
             # print('query:', query)
-            if len(phrase_search) > 0:
-                list_query = [query_0_0,
-                              query_0_1]  # , query_0_2, query_0_3, query_1_0, query_1_1, query_1_2, query_1_3]
-            else:
-                list_query = [query_0_0, query_0_2, query_0_3, query_1_0, query_1_2, query_1_3]
+            list_query = [query_0_0, query_0_1, query_0_2, query_0_3, query_1_0, query_1_1, query_1_2, query_1_3]
 
             def query_uv():
                 list_id = []
@@ -1205,7 +1201,7 @@ def recommend_ntd_log():
                     res_1 = res_1['hits']
                     for i in res_1['hits']:
                         a = i['_source']['use_id']
-                        print('title:', i['_source']['cv_title'])
+                        print('a:', a)
                         if a not in list_id:
                             ss.append({'use_id': i['_source']['use_id'], 'cv_title': i['_source']['cv_title'],
                                        'cv_content': i['_source']['cv_all_php']})
